@@ -14,12 +14,10 @@
     "package:itch": "npm run build && node scripts/package-itch.mjs"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
     "@provablehq/sdk": "^0.11.6",
     "ffmpeg-static": "^5.3.0",
     "ffprobe-static": "^3.1.0",
     "vite": "^6.4.3"
-  },
-  "dependencies": {
-    "@playwright/test": "^1.62.1"
   }
 }
