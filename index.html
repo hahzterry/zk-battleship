@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-    <title>隐海战舰 — Shadow Fleet | ZK Battleship on Aleo</title>
-    <meta name="description" content="隐海战舰 Shadow Fleet — 基于 Aleo 零知识证明的隐私战舰棋。战舰位置加密保护，对手能验证命中结果却看不到船位。3种对战模式，WebGPU加速，区块链课堂。" />
-    <meta name="keywords" content="Aleo, ZK, zero-knowledge, battleship, GameFi, privacy, snarkVM, Leo, blockchain, WebRTC, 零知识证明, 隐私, 区块链游戏" />
+    <title>Shadow Fleet — ZK Battleship on Aleo</title>
+    <meta name="description" content="Shadow Fleet — Privacy-preserving Battleship on Aleo zero-knowledge proofs. Ship positions are cryptographically hidden, opponents can verify hit results without seeing ship placements. 3 game modes, WebGPU accelerated, blockchain classroom." />
+    <meta name="keywords" content="Aleo, ZK, zero-knowledge, battleship, GameFi, privacy, snarkVM, Leo, blockchain, WebRTC, zero-knowledge proof, privacy, blockchain gaming" />
     <meta name="author" content="MichaelQiu" />
     <meta name="theme-color" content="#0a1929" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="隐海战舰 — Shadow Fleet | ZK Battleship on Aleo" />
-    <meta property="og:description" content="基于 Aleo 零知识证明的隐私战舰棋：对手能验证命中结果、却永远看不到你的船在哪。" />
+    <meta property="og:title" content="Shadow Fleet — ZK Battleship on Aleo" />
+    <meta property="og:description" content="Privacy-preserving Battleship on Aleo zero-knowledge proofs: opponents can verify hit results, but never see where your ships are." />
     <meta property="og:url" content="https://zk-battleship-aleo-fix.vercel.app" />
     <meta property="og:image" content="https://raw.githubusercontent.com/cpufreestyle/zk-battleship-aleo/main/screenshots/start.png" />
 
@@ -25,25 +25,31 @@
     <link rel="icon" type="image/svg+xml" href="./icons/favicon.svg" />
 
     <!--
-      跨源隔离引导（COOP/COEP）—— 必须在 main.js 之前以「经典脚本」同步执行。
+      Cross-Origin Isolation Bootstrapping (COOP/COEP) — must execute synchronously
+      as a "classic script" before main.js.
 
-      Aleo wasm 无条件使用共享内存，需要页面处于 crossOriginIsolated 状态。
-      各托管环境的情况：
-        · 本机 vite dev/preview  → vite.config.js 已下发 COOP/COEP，本脚本直接退出
-        · itch.io                → 需在项目设置 Embed Options → Frame Options
-                                   勾选 "SharedArrayBuffer support"，勾了就自带头
-        · GitHub Pages / CloudStudio → 不能自定义响应头，靠本脚本用 Service Worker
-                                        合成响应头来恢复隔离
-        · Netlify / Cloudflare Pages → public/_headers 已配
-        · Vercel                 → vercel.json 已配
+      Aleo wasm unconditionally uses shared memory, requiring the page to be in a
+      crossOriginIsolated state.
 
-      无论以上哪条路径失败，zk.js 都会探测到并干净降级到本地校验，
-      游戏保持可玩，不会白屏或卡死。加 ?nocoi=1 可强制关闭本脚本用于对比测试。
+      Hosting environment handling:
+        · Local vite dev/preview → vite.config.js already sets COOP/COEP headers,
+                                   this script exits immediately
+        · itch.io               → Enable "SharedArrayBuffer support" in Embed Options
+                                   → Frame Options, headers are set automatically
+        · GitHub Pages / CloudStudio → Custom headers are not supported, this script
+                                        uses a Service Worker to synthesize headers
+                                        and restore isolation
+        · Netlify / Cloudflare Pages → public/_headers is configured
+        · Vercel                → vercel.json is configured
+
+      If any of the above paths fail, zk.js will detect it and gracefully fall back
+      to local verification — the game remains playable without white screen or crashes.
+      Add ?nocoi=1 to forcibly disable this script for comparison testing.
     -->
     <script src="./coi-serviceworker.js"></script>
   </head>
   <body>
-    <div id="app"><div class="initial-loader"><div class="initial-loader__spinner"></div><p>隐海战舰加载中…</p></div></div>
+    <div id="app"><div class="initial-loader"><div class="initial-loader__spinner"></div><p>Loading Shadow Fleet…</p></div></div>
     <div id="tutorial-overlay" hidden></div>
     <script type="module" src="/main.js"></script>
   </body>
